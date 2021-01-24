@@ -114,7 +114,7 @@ class EditRecipeViewPresenter : BasePresenter<EditRecipeView>() {
                 CreateOrEditRecipe.serializer(),
                 createOrEditRecipe
             )
-            httpClient.put<Unit>("http://207.254.71.167:9999/recipe") {
+            httpClient.put<Unit>("$host/recipe") {
                 contentType(ContentType.Application.Json)
                 body = createOrEditRecipeJson
             }

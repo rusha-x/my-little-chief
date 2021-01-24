@@ -42,7 +42,7 @@ class RecipeListViewModel : ViewModel() {
         viewModelScope.launch {
             isRefreshingLiveData.value = true
             val recipesJson = httpClient.get<String>(
-                "http://207.254.71.167:9999/recipe/all"
+                "$host/recipe/all"
             )
             val allRecipes = json.parse(
                 deserializer = Recipe.serializer().list,
