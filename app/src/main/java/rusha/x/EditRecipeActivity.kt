@@ -4,25 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.request.put
 import io.ktor.http.ContentType
 import io.ktor.http.contentType
-import kotlinx.android.synthetic.main.edit_recipe_activity.*
+import kotlinx.android.synthetic.main.edit_recipe_fragment.*
 import kotlinx.android.synthetic.main.edit_recipe_ingredient.view.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import org.kodein.di.DI
-import org.kodein.di.TT
 import org.kodein.di.bind
-import org.kodein.di.direct
 import org.kodein.di.instance
 import org.kodein.di.singleton
-import summer.android.SummerActivity
 import summer.android.SummerFragment
 
 interface EditRecipeView {
@@ -133,7 +128,7 @@ class EditRecipeFragment : SummerFragment(), EditRecipeView {
         savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(
-            R.layout.edit_recipe_activity,
+            R.layout.edit_recipe_fragment,
             container,
             false
         )
@@ -157,7 +152,7 @@ class EditRecipeFragment : SummerFragment(), EditRecipeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        save.setOnClickListener {
+        saveButton.setOnClickListener {
             presenter.onSaveClick()
         }
 
@@ -211,20 +206,20 @@ class EditRecipeIngredientsAdapter(
     ) : RecyclerView.ViewHolder(containerView) {
 
         fun bind(ingredient: CreateOrEditRecipe.Ingredient) {
-            containerView.addIngredient.setText(ingredient.product.name)
-            containerView.ingredientCount.setText(ingredient.countInRecipe.toString())
+            containerView.addIngredientEdit.setText(ingredient.product.name)
+            containerView.ingredientCountEdit.setText(ingredient.countInRecipe.toString())
 
-            containerView.plus.setOnClickListener {
+            containerView.plusButton.setOnClickListener {
                 presenter.onIngredientPlusClick(ingredient)
             }
 
-            containerView.minus.setOnClickListener {
+            containerView.minusButton.setOnClickListener {
                 presenter.onIngredientMinusClick(ingredient)
             }
 
-            containerView.ingredientCount.setOnFocusChangeListener { v, hasFocus ->
+            containerView.ingredientCountEdit.setOnFocusChangeListener { v, hasFocus ->
                 if (!hasFocus) {
-                    val count = containerView.ingredientCount.text.toString().toDouble()
+                    val count = containerView.ingredientCountEdit.text.toString().toDouble()
                     presenter.onSetIngredientCount(ingredient, count)
                 }
             }

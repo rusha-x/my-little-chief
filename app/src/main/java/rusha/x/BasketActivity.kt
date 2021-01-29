@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
-import kotlinx.android.synthetic.main.basket_activity.*
+import kotlinx.android.synthetic.main.basket_fragment.*
 import kotlinx.android.synthetic.main.basket_item.view.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
@@ -50,7 +50,7 @@ class BasketViewModel : ViewModel() {
 
 // класс BasketActivity наследует все свойства AppCompatActivity т.е все его переменные и функции
 // TODO для каждого BasketActivity, являющегося AppCompatActivity
-class BasketFragment : Fragment(R.layout.basket_activity) {
+class BasketFragment : Fragment(R.layout.basket_fragment) {
     private lateinit var viewModel: BasketViewModel
 
     // мы переопределяем onCreate, чтобы сделать доп. действия при создании активити

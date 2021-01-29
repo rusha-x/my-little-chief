@@ -14,7 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
-import kotlinx.android.synthetic.main.recipe_list_activity.*
+import kotlinx.android.synthetic.main.recipe_list_fragment.*
 import kotlinx.android.synthetic.main.recipe_list_item.view.*
 import kotlinx.coroutines.launch
 import kotlinx.serialization.builtins.list
@@ -62,7 +62,7 @@ class RecipeListViewModel : ViewModel() {
     }
 }
 
-class RecipeListFragment : Fragment(R.layout.recipe_list_activity) {
+class RecipeListFragment : Fragment(R.layout.recipe_list_fragment) {
     private lateinit var viewModel: RecipeListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.recipe_details_activity.*
+import kotlinx.android.synthetic.main.recipe_details_fragment.*
 import kotlinx.android.synthetic.main.recipe_details_item.view.*
 
 class RecipeDetailsViewModel : ViewModel() {
@@ -30,7 +30,7 @@ class RecipeDetailsViewModel : ViewModel() {
     }
 }
 
-class RecipeDetailsFragment : Fragment(R.layout.recipe_details_activity) {
+class RecipeDetailsFragment : Fragment(R.layout.recipe_details_fragment) {
     private lateinit var viewModel: RecipeDetailsViewModel
 
     private val args by navArgs<RecipeDetailsFragmentArgs>()
