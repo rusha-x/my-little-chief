@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.product_details_fragment.*
 
-class ProductDetailsViewModel : ViewModel() {
+class ProductDetailsViewModel : BaseViewModel() {
 
     val nameLiveData = MutableLiveData<String>("")
     val formattedPriceLiveData = MutableLiveData<String>("")

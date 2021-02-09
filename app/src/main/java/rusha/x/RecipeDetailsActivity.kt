@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.recipe_details_fragment.*
 import kotlinx.android.synthetic.main.recipe_details_item.view.*
 
-class RecipeDetailsViewModel : ViewModel() {
+class RecipeDetailsViewModel : BaseViewModel() {
     val recipeNameLiveData = MutableLiveData<String>("")
     val ingredientsLiveData = MutableLiveData<List<Recipe.Ingredient>>()
     val goToProductDetails = SingleLiveEvent<Product>()

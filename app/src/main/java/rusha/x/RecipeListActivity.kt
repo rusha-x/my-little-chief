@@ -21,7 +21,7 @@ import kotlinx.serialization.builtins.list
 import kotlinx.serialization.json.Json
 import org.kodein.di.instance
 
-class RecipeListViewModel : ViewModel() {
+class RecipeListViewModel : BaseViewModel() {
     private val json by di.instance<Json>()
     private val httpClient by di.instance<HttpClient>()
 
@@ -39,7 +39,7 @@ class RecipeListViewModel : ViewModel() {
     }
 
     private fun updateRecipes() {
-        viewModelScope.launch {
+        launchWithRetry {
             isRefreshingLiveData.value = true
             val recipesJson = httpClient.get<String>(
                 "$host/recipe/all"

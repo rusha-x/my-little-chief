@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 import org.kodein.di.instance
 
-class BasketViewModel : ViewModel() {
+class BasketViewModel : BaseViewModel() {
     private val json by di.instance<Json>()
     private val httpClient by di.instance<HttpClient>()
 
@@ -28,7 +28,7 @@ class BasketViewModel : ViewModel() {
     val goToProductDetails = SingleLiveEvent<Product>()
 
     init {
-        viewModelScope.launch {
+        launchWithRetry {
             val basketJson = httpClient.get<String>(
                 "https://gist.githubusercontent.com/adevone/" +
                         "440aeb6101f17075c79282a3f054a6ed/raw/" +
